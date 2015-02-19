@@ -11,11 +11,11 @@ We use buildroot for a few things:
 
 ## Pre-requisites
 
-- a `mipsel-tsar-linux-uclibc` cross-toolchain (see previous HOWTO)
-- [buildroot](https://github.com/joel-porquet/tsar-buildroot) sources (e.g.
-  `${HOME}/work/buildroot`)
-- [linux](https://github.com/joel-porquet/tsar-linux) sources (e.g.
-  `${HOME}/work/linux`)
+- a functional `mipsel-tsar-linux-uclibc` cross-toolchain (see previous HOWTO)
+- [buildroot](https://github.com/joel-porquet/tsar-buildroot) sources with TSAR
+  support (e.g. `${HOME}/work/buildroot`)
+- [linux](https://github.com/joel-porquet/tsar-linux) sources with TSAR support
+  (e.g. `${HOME}/work/linux`)
 
 ## Build buildroot for TSAR
 

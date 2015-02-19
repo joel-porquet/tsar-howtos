@@ -4,12 +4,12 @@ The idea here is to generate the cross-toolchain `mipsel-tsar-linux-uclibc`.
 
 ## Pre-requisites
 
-- [crosstool-ng](https://github.com/joel-porquet/tsar-crosstool-ng) sources
-  (e.g. `${HOME}/work/crosstool-ng`)
-- [linux](https://github.com/joel-porquet/tsar-linux) sources (e.g.
-  `${HOME}/work/linux`)
-- [uclibc](https://github.com/joel-porquet/tsar-uclibc) sources (e.g.
-  `${HOME}/work/uclibc`)
+- [crosstool-ng](https://github.com/joel-porquet/tsar-crosstool-ng) sources with
+  TSAR support (e.g. `${HOME}/work/crosstool-ng`)
+- [linux](https://github.com/joel-porquet/tsar-linux) sources with TSAR support
+  (e.g.  `${HOME}/work/linux`)
+- [uclibc](https://github.com/joel-porquet/tsar-uclibc) sources with TSAR
+  support (e.g.  `${HOME}/work/uclibc`)
 
 ## Compile crosstool-ng
 
