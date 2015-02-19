@@ -22,7 +22,7 @@ Make a local install.
 ## Setup the environment
 
 Create a new directory for generating the cross-toolchain (e.g.
-`${HOME}/work/x-tools`)
+`${HOME}/work/crosstool-build`)
 
 In this new directory, and to make your life simpler, make a script for calling
 `ct-ng` (unless you decided to install `ct-ng` globally). For example (adapt
