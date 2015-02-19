@@ -11,8 +11,9 @@
     - `CT_PREFIX`: prefix of your cross-toolchain (should be
       `mipsel-unknown-elf-` if you followed the instructions of the first HOWTO)
 - Generate the initramfs:
-
-    make && make install
+```
+	make && make install
+```
 
 ## Recompilation of Linux
 
