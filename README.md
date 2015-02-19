@@ -15,7 +15,7 @@ kernel alone to a "full-fledge" [Busybox](http://www.busybox.net/)-based system.
 4. [Howto](20-crosstool-ng.mdwn): generate an
    [uClibC](http://www.uclibc.org/)-based cross-toolchain for TSAR with
    [crosstool-ng](http://crosstool-ng.org/)
-5. [Howto](30-buildroot): build a complex system with
+5. [Howto](30-buildroot.mdwn): build a complex system with
    [Buildroot](http://buildroot.uclibc.org/)
 
 ## Credits
