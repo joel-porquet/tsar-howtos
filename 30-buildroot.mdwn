@@ -1,0 +1,43 @@
+# HOWTO: Build a complex system with Buildroot
+
+We use buildroot for a few things:
+
+- to compile the linux kernel
+- to compile a few packages we want to run on the system (e.g. busybox)
+- to generate a root filesystem, containing the classic unix layout (/dev, /etc,
+  ...)
+- to generate a final image containing both the linux kernel and the root
+  filesystem
+
+## Pre-requisites
+
+- a `mipsel-tsar-linux-uclibc` cross-toolchain (see previous HOWTO)
+- [buildroot](https://github.com/joel-porquet/tsar-buildroot) sources (e.g.
+  `${HOME}/work/buildroot`)
+- [linux](https://github.com/joel-porquet/tsar-linux) sources (e.g.
+  `${HOME}/work/linux`)
+
+## Build buildroot for TSAR
+
+    make -0=output_tsar tsar_defconfig
+
+All the following commands require you to be in the `output_tsar/`
+sub-directory.
+
+If necessary (e.g. changing the path of the cross-toolchain, or the path of
+Linux sources), you can further tune the configuration.
+
+Warning: it is actually probably necessary that you change the Linux
+configuration file (`Kernel->Defconfig name`).
+
+    make menuconfig
+
+When ready, start the big compilation:
+
+    make
+
+## Using it
+
+At the end of the compilation, the `vmlinux` image containing Linux and the root
+filesystem is stored in `output_tsar/images/`.
+

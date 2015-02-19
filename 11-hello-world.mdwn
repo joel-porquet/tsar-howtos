@@ -1,0 +1,31 @@
+# HOWTO: Run a hello world assembly application
+
+## Installation of the Linux headers
+
+	make ARCH=tsar headers_install
+
+## Generation of a initramfs containing the hello world application
+
+- Get the [hello
+  world](https://github.com/joel-porquet/tsar-initramfs-hello-world)-based
+  initramfs
+- Modify the Makefile if necessary:
+    - `KERNEL_BASE`: root pathname of Linux directory
+    - `CT_PREFIX`: prefix of your cross-toolchain (should be
+      `mipsel-unknown-elf-` if you followed the instructions of the first HOWTO)
+- Generate the initramfs:
+
+    make && make install
+
+## Recompilation of Linux
+
+We must recompile Linux to take the newly generated `initramfs` (with the hello
+world application) into account:
+
+	make ARCH=tsar -j4
+
+
+## Run
+
+Now the simulation should go on past mounting the initial root filesystem and
+execute this user application successfully.

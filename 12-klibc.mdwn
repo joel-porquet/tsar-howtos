@@ -1,0 +1,30 @@
+# HOWTO: Run a klibc-based system
+
+## Compilation of a klibc-based initramfs
+
+- Get [klibc](https://github.com/joel-porquet/tsar-klibc) with TSAR support
+- Get the [klibc-based
+  initramfs](https://github.com/joel-porquet/tsar-initramfs-klibc)
+- Modify the Makefile if necessary:
+    - `KERNEL_BASE`: root pathname of Linux directory
+    - `KLIBC_BASE`: root pathname of klibc directory
+    - `CT_PREFIX`: prefix of your cross-toolchain (should be
+      `mipsel-unknown-elf-` if you followed the instructions of the first HOWTO)
+- Generate the initramfs:
+
+    make && make install
+
+## Recompilation of Linux
+
+We must recompile Linux to take the newly generated `initramfs` (with the
+klibc-based system) into account:
+
+	make ARCH=tsar -j4
+
+
+## Run
+
+A little after seeing that Linux freed unused kernel memory, you can start to
+type in commands (there is no prompt to indicate the command line).
+
+Try listing the content of `/bin` to get the available applications.

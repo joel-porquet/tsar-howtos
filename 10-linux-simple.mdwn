@@ -1,0 +1,37 @@
+# HOWTO: Compile the Linux kernel for the TSAR processor architecture
+
+## Pre-requisites
+
+- [SoCLib](http://www.soclib.fr) and [TSAR](https://www-soc.lip6.fr/trac/tsar),
+  with functional `linux_monocluster` (read the README file within the
+  platform's directory for further instructions) or `tsar_generic_leti`
+  simulation platforms.
+- An operational `mipsel-unknown-elf` toolchain (see below).
+
+## Bare-metal cross-toolchain
+
+Configuration of `mipsel-unknown-elf` toolchain:
+
+- **binutils**: `--target=mipsel-unknown-elf
+  --program-prefix=mipsel-unknown-elf- --disable-nls --disable-werror`
+- **gcc**: `--target=mipsel-unknown-elf --program-prefix=mipsel-unknown-elf-
+  --disable-nls --disable-werror --enable-languages=c --disable-libssp
+  --disable-threads --without-headers`
+- **gdb**: `--target=mipsel-unknown-elf --program-prefix=mipsel-unknown-elf-`
+
+## Compile Linux for TSAR
+
+- Get [Linux with Tsar support](https://github.com/joel-porquet/tsar-linux)
+- Choose the right configuration amongst those available:
+
+    make ARCH=tsar help | grep tsar
+
+- Compile:
+
+	make ARCH=tsar -j4
+
+## Run
+
+- Run the generated `vmlinux` kernel image on a functional platform.
+- Linux should crash when trying to mount the first root filesystem since there
+  is none.

@@ -1,0 +1,63 @@
+# HOWTO: Generate an uClibC-based cross-toolchain for TSAR with crosstool-ng
+
+The idea here is to generate the cross-toolchain `mipsel-tsar-linux-uclibc`.
+
+## Pre-requisites
+
+- [crosstool-ng](https://github.com/joel-porquet/tsar-crosstool-ng) sources
+  (e.g. `${HOME}/work/crosstool-ng`)
+- [linux](https://github.com/joel-porquet/tsar-linux) sources (e.g.
+  `${HOME}/work/linux`)
+- [uclibc](https://github.com/joel-porquet/tsar-uclibc) sources (e.g.
+  `${HOME}/work/uclibc`)
+
+## Compile crosstool-ng
+
+Make a local install.
+
+    ./bootstrap
+    ./configure --enable-local
+    make
+
+## Setup the environment
+
+Create a new directory for generating the cross-toolchain (e.g.
+`${HOME}/work/x-tools`)
+
+In this new directory, and to make your life simpler, make a script for calling
+`ct-ng` (unless you decided to install `ct-ng` globally). For example (adapt
+`CTNG_DIR` to meet your configuration):
+
+    $ cat ./ctng.sh
+
+    #!/bin/sh
+    CTNG_DIR=${HOME}/work/crosstool-ng
+    ${CTNG_DIR}/ct-ng $*
+
+## Configure the cross-toolchain
+
+First, use the default sample made for tsar.
+
+    ./ctng.sh mipsel-tsar-linux-uclibc
+
+If necessary, run the configuration tool and change things such as paths to
+where is located your linux and uclibc sources. Default is
+`${HOME}/work/{linux,uclibc}`
+
+    ./ctng.sh menuconfig
+
+## Build the cross-toolchain
+
+    ./ctng.sh build
+
+At the end of the compilation (23 minutes on my laptop), two new directories
+have appeared:
+
+- `_build`: contains the temporary compilation objects (you can potentially
+  delete this directory if everything went fine and you want to save space on
+  your disk)
+- `x-tools`: contains the new cross-toolchain.
+
+You can add `x-tools/mipsel-tsar-linux-uclibc/bin` to your `PATH` environment
+variable to have access to your cross-toolchain globally (not strictly necessary
+for compiling buildroot though, since we can give the path at config time).
