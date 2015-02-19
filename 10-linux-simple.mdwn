@@ -24,11 +24,11 @@ Configuration of `mipsel-unknown-elf` toolchain:
 - Get [Linux with Tsar support](https://github.com/joel-porquet/tsar-linux)
 - Choose the right configuration amongst those available:
 
-    make ARCH=tsar help | grep tsar
+	`make ARCH=tsar help | grep tsar`
 
 - Compile:
 
-	make ARCH=tsar -j4
+	`make ARCH=tsar -j4`
 
 ## Run
 
