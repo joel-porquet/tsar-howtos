@@ -20,5 +20,5 @@ kernel alone to a "full-fledge" [Busybox](http://www.busybox.net/)-based system.
 
 ## Credits
 
-Copyright (C) 2013-2015 Pierre and Marie Curie University
+Copyright (C) 2013-2015 Pierre and Marie Curie University<br />
 Joël Porquet `<joel.porquet@lip6.fr>`
